@@ -21,16 +21,18 @@
         <div class="col-lg-9 col-sm-6 videoitem">
 
             <div class="ozelcaption">
-                <div class="alert alert-info">
-                    Mark garison salonu, 02/05/2016 tarihinde randevu almak için personel seçiniz
-                </div>
-                <form action="">
-                    <div class="input-group date datepicker" data-provide="datepicker">
-                        <input type="text" class="form-control">
-                        <div class="input-group-addon">
-                            <span class="fa fa-calendar"></span>
-                        </div>
-                    </div>
+                <form action="" onsubmit="return false">
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h3>Önce Tarih Seçiniz:</h3>
+                           <div class="input-group date datepicker"  data-provide="datepicker">
+                               <input type="text" name="tarih" class="form-control">
+                               <div class="input-group-addon">
+                                   <span class="fa fa-calendar"></span>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
                 @foreach($personeller as $personel)
 
                         <div class="row randevu-listele" style="border:0">
@@ -39,8 +41,8 @@
                             </div>
                             <div class="col-md-3">
                                 {{$personel->isim}}
-                                <small class="hidden">{{$personel->kuafor_id}}</small>
-                                <button class="btn btn-warning btn-block btn-xs">Seç</button>
+                                <input type="hidden" name="personel_id" value="{{$personel->kuafor_id}}">
+                                <button class="btn btn-warning btn-block btn-xs" id="personel_sec_buton" data-id="{{$personel->kuafor_id}}">Seç</button>
                             </div>
                         </div>
 
@@ -80,12 +82,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.tr.min.js"></script>
+    <script src="js/randevu-al.js"></script>
     <script>
-        $('.datepicker').datepicker({
+         $('.datepicker').datepicker({
             format: 'dd/mm/yyyy',
             language: 'tr',
-            startDate: new Date()
-        });
+            startDate: new Date(),
+             autoclose: true
+         });
+         var d = new Date();
+
+         $('.datepicker').datepicker('update', d);
+
     </script>
 @endsection
 
