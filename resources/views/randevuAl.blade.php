@@ -31,7 +31,9 @@
                                    <span class="fa fa-calendar"></span>
                                </div>
                            </div>
+                           <button id="randeveAraButon" class="bnt btn-green btn-block">Ara</button>
                        </div>
+
                    </div>
                 @foreach($personeller as $personel)
 

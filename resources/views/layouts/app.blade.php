@@ -10,7 +10,7 @@
     <link rel="icon" href="favicon.png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
-    <base href="{{URL::to('/')}}">
+    <base href="{{URL::to('/')}}/">
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,6 +26,9 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/jquery.easy-autocomplete.min.js"></script>
     <script src="js/custom.js"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 </head>
 
@@ -66,7 +69,9 @@
                     <div class="visible-xs clearfix"></div>
                     <div class="col-lg-2 col-sm-4  col-xs-8">
                         <div class="avatar pull-left">
-                            <img src="images/avatar.png" alt="avatar" />
+                            @if (!Auth::guest())
+                            <img style="width: 50px;height: 50px" src="{{ asset('images/avatar/'.$avatar->avatar_url) }}" alt="avatar" />
+                            @endif
                             <span class="status"></span>
                         </div>
                         <div class="selectuser pull-left">
@@ -141,6 +146,21 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                @if(count($errors))
+                    @foreach($errors->all() as $error)
+
+                        <script>
+                            toastr.error('{{ $error }}');
+                        </script>
+
+                    @endforeach
+                @endif
+                @if (session('success'))
+                        <script>
+                            toastr.success('{{session('success')}}');
+                        </script>
+                @endif
+
 
 
 

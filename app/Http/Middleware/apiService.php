@@ -19,12 +19,12 @@ class apiService
      */
     public function handle($request, Closure $next)
     {
-        if(DB::table("users")->where('id',Input::get('id'))->where('api_token',Input::get('token'))->first()){
+        if(DB::table("users")->where('api_token',Input::get('token'))->first()){
             return $next($request);
         }
         else{
             return Response::json( [
-                'case' => "Token Hatası"
+                'case' => "Token Hatasi"
 
         ], 200);
         }

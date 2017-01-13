@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Kuafor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class KuaforController extends Controller
 {
@@ -18,7 +19,8 @@ class KuaforController extends Controller
     public function index()
     {
         return response()->json(
-            Kuafor::where('user_id',Input::get('id'))->get()
+
+            DB::select(DB::raw('select cities.baslik as sehir_adi, kuaforler.user_id as kuafor_id, kuaforler.isim as kuafor, kuaforler.logo as logo from cities, kuaforler where kuaforler.sehir = cities.id'))
         );
     }
 

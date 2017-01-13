@@ -13,4 +13,10 @@ class getCityController extends Controller
             $city = DB::table('cities')->get()
         );
     }
+
+    protected function sacStilleri(){
+        return response()->json(
+            $return = DB::table('sac_stiller')->get()
+        );
+    }
 }

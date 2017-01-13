@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <!-- Updates from Subscriptions -->
     <div class="content-block">
         <div class="cb-header">

@@ -3,8 +3,7 @@
  */
 
 $(function () {
-    $("#personel_sec_buton").click(function () {
-        var id = $(this).attr("data-id");
-        console.log($("input[name=tarih]").val());
+    $("#randeveAraButon").click(function () {
+
     });
-})
+});

@@ -25,16 +25,29 @@ Route::post('/kuafor', 'kuaforlerController@isimEkle');
 
 Route::get('/randevu-ara/{id?}','RandevuAraController@index');
 Route::get('/randevu-al/{id?}','RandevuAlController@index');
+Route::post('/profil/resimYukle', 'ProfileController@resimYukle');
+Route::post('/profil/bilgiGuncelle', 'ProfileController@bilgiGuncelle');
 
 
 
     Route::group(['prefix' => 'api'], function()
     {
         Route::get('/getCity', 'api\getCityController@index');
+        Route::get('/getSacStilleri', 'api\getCityController@sacStilleri');
+        Route::post('/uyeKaydet', 'api\ProfileController@uyeKaydet');
+        Route::resource('/kuaforlistesi', 'api\KuaforController');
+        Route::get('uyeListele','api\ProfileController@uyeListele');
+        /*
         Route::group(['middleware' => 'apiService'], function(){
-            Route::get('/login', 'api\LoginController@login');
+            Route::get('/login', 'api\loginController@login');
             Route::resource('/kuaforlistesi', 'api\KuaforController');
-        });
 
+*/
+
+        Route::get('/login', 'api\loginController@login');
+        Route::group(['middleware' => 'apiService'], function(){
+            Route::post('/uyeGuncelle', 'api\ProfileController@uyeGuncelle');
+
+        });
     });
 

@@ -20,4 +20,6 @@ class Kuafor extends Model
     protected $hidden = [
 
     ];
+
+
 }
