@@ -20,7 +20,7 @@
 
         <div class="col-lg-9 col-sm-6 videoitem">
 
-            <div class="ozelcaption">
+            <div class="ozelcaption" id="contentLoad">
                 <form action="" onsubmit="return false">
                    <div class="row">
                        <div class="col-md-6">

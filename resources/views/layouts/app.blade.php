@@ -26,6 +26,8 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/jquery.easy-autocomplete.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/waitMe.min.js"></script>
+    <link rel="stylesheet" href="css/waitMe.min.css">
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
