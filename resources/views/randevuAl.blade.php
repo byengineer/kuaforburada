@@ -21,7 +21,7 @@
         <div class="col-lg-9 col-sm-6 videoitem">
 
             <div class="ozelcaption" id="contentLoad">
-                <form action="" onsubmit="return false">
+
                    <div class="row">
                        <div class="col-md-6">
                            <h3>Önce Tarih Seçiniz:</h3>
@@ -31,10 +31,11 @@
                                    <span class="fa fa-calendar"></span>
                                </div>
                            </div>
-                           <button id="randeveAraButon" class="bnt btn-green btn-block">Ara</button>
+
                        </div>
 
                    </div>
+
                 @foreach($personeller as $personel)
 
                         <div class="row randevu-listele" style="border:0">
@@ -42,28 +43,31 @@
                                 <img class="img-responsive" style="width: 75px" src="http://wwwuser.gwdg.de/~uatz/bilder/personen/yakgun.jpg" alt="">
                             </div>
                             <div class="col-md-3">
-                                {{$personel->isim}}
+                                <input type="hidden" name="kuafor_id" value="{{$kuaforID}}">
                                 <input type="hidden" name="personel_id" value="{{$personel->kuafor_id}}">
-                                <button class="btn btn-warning btn-block btn-xs" id="personel_sec_buton" data-id="{{$personel->kuafor_id}}">Seç</button>
+                                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                                <div class="radio radio-primary">
+                                    <input type="radio" name="kuafor" id="radio12" value="option2">
+                                    <label for="radio12">{{$personel->isim}}</label>
+                                </div>
                             </div>
                         </div>
 
 
                 @endforeach
-                </form>
-
-
-                <div class="row randevu-listele" style="border:0">
+                <div class="row">
                     <div class="col-md-6">
-                        <button class="btn btn-success" style="margin-bottom: 5px">10:00</button>
-                        <button class="btn btn-success" style="margin-bottom: 5px">11:00</button>
-                        <button class="btn btn-success" style="margin-bottom: 5px">12:00</button>
-                        <button class="btn btn-success" style="margin-bottom: 5px">12:00</button>
-                        <button class="btn btn-success" style="margin-bottom: 5px">12:00</button>
-                        <button class="btn btn-success" style="margin-bottom: 5px">12:00</button>
-                        <button class="btn btn-danger   " style="margin-bottom: 5px">12:00</button>
-                        <button class="btn btn-success" style="margin-bottom: 5px">12:00</button>
-                        <button class="btn btn-success" style="margin-bottom: 5px">12:00</button>
+                        <button id="randeveAraButon" class="btn btn-green btn-block">Ara</button>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+
+
+                <div class="row " style="border:0; margin-top: 20px">
+                    <div class="randevu-liste-sonuc col-md-6">
+
 
                     </div>
                     <div class="col-md-3">  <button class="btn btn-green btn-block" style="height: 46px">Randevuyu Al</button></div>
@@ -80,6 +84,33 @@
 
 
     </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Randevu Al</h4>
+                </div>
+                <div class="modal-body">
+                    <button id="secilenRandevuKaydet" class="btn btn-block btn-green">Kaydet</button>
+                    <div id="randevuSonuc"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
     <!-- listele bitiş -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>

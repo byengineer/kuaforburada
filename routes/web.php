@@ -24,6 +24,8 @@ Route::get('/kuafor', 'kuaforlerController@index');
 Route::post('/kuafor', 'kuaforlerController@isimEkle');
 
 Route::get('/randevu-ara/{id?}','RandevuAraController@index');
+Route::post('/randevu-ara/listele','RandevuAraController@randevuListele');
+Route::post('/randevu-ara/al','RandevuAraController@randevuAl');
 Route::get('/randevu-al/{id?}','RandevuAlController@index');
 Route::post('/profil/resimYukle', 'ProfileController@resimYukle');
 Route::post('/profil/bilgiGuncelle', 'ProfileController@bilgiGuncelle');
